@@ -1,7 +1,7 @@
 {
   "id": "auto-description",
   "name": "Auto Description",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "minAppVersion": "0.15.0",
   "description": "自动根据文章内容生成摘要",
   "author": "Forsertee",
