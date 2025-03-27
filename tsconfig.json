@@ -11,6 +11,7 @@
     "importHelpers": true,
     "isolatedModules": true,
     "strictNullChecks": true,
+    "skipLibCheck": true, // 添加这一行，跳过库文件的类型检查
     "lib": [
       "DOM",
       "ES5",

@@ -6,3 +6,13 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+/* 设置页面样式 */
+.auto-description-settings .setting-item-description {
+  font-size: 12px;
+}
+
+.auto-description-settings textarea {
+  min-height: 100px;
+  width: 100%;
+}
