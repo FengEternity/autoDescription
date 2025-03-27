@@ -1,94 +1,62 @@
-# Obsidian Sample Plugin
+# Auto Description
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+一个用于 Obsidian 的插件，可以使用 Kimi AI 自动为文章生成摘要，并将其添加到文章的 Front Matter 中。
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+## 功能特点
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+- 使用 Kimi (Moonshot) API 生成高质量的文章摘要
+- 自动将摘要添加到文章的 Front Matter 的 description 字段
+- 支持自定义摘要长度和提示词
+- 支持多种 Moonshot 模型选择
+- 简单易用的设置界面
 
-## First time developing plugins?
+## 安装方法
 
-Quick starting guide for new plugin devs:
+1. 在 Obsidian 中打开设置
+2. 进入第三方插件设置
+3. 关闭安全模式
+4. 点击"浏览"进入社区插件市场
+5. 搜索"Auto Description"并安装
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+## 使用方法
 
-## Releasing new releases
+1. 安装插件后，首先在插件设置中配置你的 Kimi API 密钥
+2. 在任意文章中，使用命令面板（Cmd/Ctrl + P）
+3. 输入"生成文章摘要"并执行
+4. 插件会自动生成摘要并添加到文章的 Front Matter 中
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+## 配置选项
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+- **API 密钥**：你的 Kimi API 密钥，可从 [Moonshot 控制台](https://platform.moonshot.cn/console/api-keys) 获取
+- **模型选择**：
+  - Moonshot V1 8K：适用于一般长度的文章
+  - Moonshot V1 32K：适用于较长文章
+  - Moonshot V1 128K：适用于超长文章
+- **摘要长度**：可设置 50-500 字之间的摘要长度
+- **自定义提示词**：可自定义生成摘要时的提示词模板
 
-## Adding your plugin to the community plugin list
+## 注意事项
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+- 使用前请确保已获取有效的 Kimi API 密钥
+- 建议根据文章长度选择合适的模型
+- 生成的摘要会自动替换已有的 description 字段
+- 如果文章没有 Front Matter，插件会自动创建
 
-## How to use
+## 开发计划
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+- [ ] 支持更多 AI 模型接口
+- [ ] 添加批量处理功能
+- [ ] 支持更多自定义选项
+- [ ] 优化摘要生成质量
 
-## Manually installing the plugin
+## 许可证
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+MIT License
 
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
+## 作者
 
-## Funding URL
+Forsertee
 
-You can include funding URLs where people who use your plugin can financially support it.
+## 问题反馈
 
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
-```
-
-If you have multiple URLs, you can also do:
-
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
-
-## API Documentation
-
-See https://github.com/obsidianmd/obsidian-api
+如果你在使用过程中遇到任何问题，或有任何建议，欢迎在 GitHub 上提出 Issue。
